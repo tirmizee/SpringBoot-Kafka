@@ -7,6 +7,10 @@
 ### list all the topics
 
     bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+    
+### Properties
+
+    retention time (เวลาในการเก็บรักษา message)
 
 ### Reference
 
