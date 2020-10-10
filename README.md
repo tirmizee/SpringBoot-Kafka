@@ -23,3 +23,5 @@
 - https://www.tutorialspoint.com/apache_kafka/apache_kafka_consumer_group_example.htm
 
 - https://martinfowler.com/articles/201701-event-driven.html
+
+- https://reflectoring.io/spring-boot-kafka/
