@@ -17,7 +17,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 @Configuration
 public class KafkaConsumerConfig {
 	
-	@Value("${spring.kafka.bootstrap-servers}")
+	@Value("${spring.kafka.consumer.bootstrap-servers}")
 	public String kafkaBootstrapServer;
 
 	@Bean(name = "consumerStringConfig")
@@ -25,6 +25,7 @@ public class KafkaConsumerConfig {
 		Map<String, Object> consumerConfig = new HashMap<>();
 		consumerConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServer);
 		consumerConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		consumerConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		return consumerConfig;
 	}
 	
