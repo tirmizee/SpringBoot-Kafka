@@ -21,7 +21,7 @@ public class KafkaConsumerConfig {
 	public String kafkaBootstrapServer;
 
 	@Bean(name = "consumerStringConfig")
-	public Map<String, Object> consumerStringConfig() {
+	public Map<String, Object> consumerStringConfig() { 
 		Map<String, Object> consumerConfig = new HashMap<>();
 		consumerConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServer);
 		consumerConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
