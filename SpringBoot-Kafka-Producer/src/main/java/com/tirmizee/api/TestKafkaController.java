@@ -32,6 +32,10 @@ public class TestKafkaController {
 	@Qualifier("kafkaJsonTemplate")
 	private KafkaTemplate<String, Object> kafkaJsonTemplate;
 	
+	@Autowired
+	@Qualifier("kafkaByteTemplate")
+	private KafkaTemplate<String, byte[]> kafkaByteTemplate;
+	
 	@GetMapping(path = "/publish/{message}")
 	public String publish(@PathVariable String message) throws InterruptedException, ExecutionException {
 		Payload payload = new Payload();
@@ -90,6 +94,25 @@ public class TestKafkaController {
 		inner.setMessage("sssss");
 		payload.setInner(inner);
 		ListenableFuture<SendResult<String, Object>> listenableFuture = kafkaJsonTemplate.send("topic-2", payload);
+		listenableFuture.addCallback(
+			result -> {
+				LOG.info("RecordMetadata partition -> {}", result.getRecordMetadata().partition());
+				LOG.info("RecordMetadata checksum -> {}", result.getRecordMetadata().checksum());
+				LOG.info("RecordMetadata offset -> {}", result.getRecordMetadata().offset());
+				LOG.info("ProducerRecord key -> {}", result.getProducerRecord().key());
+				LOG.info("ProducerRecord topic -> {}", result.getProducerRecord().topic());
+			},
+			ex -> {
+				
+			}
+		);
+		System.out.println("success");
+		return "success";
+	}
+	
+	@GetMapping(path = "/publish/byte")
+	public String publishByte() throws InterruptedException, ExecutionException {
+		ListenableFuture<SendResult<String, byte[]>> listenableFuture = kafkaByteTemplate.send("topic-3", new byte[] {89,90});
 		listenableFuture.addCallback(
 			result -> {
 				LOG.info("RecordMetadata partition -> {}", result.getRecordMetadata().partition());

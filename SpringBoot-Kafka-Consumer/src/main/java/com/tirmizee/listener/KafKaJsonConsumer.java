@@ -11,7 +11,7 @@ import com.tirmizee.model.Payload;
 @Service
 public class KafKaJsonConsumer {
 
-private final Logger logger = LoggerFactory.getLogger(KafKaObjectConsumer.class);
+	private final Logger logger = LoggerFactory.getLogger(KafKaJsonConsumer.class);
 	
 	@KafkaListener(
 		groupId = "reflectoring-group-2", 
