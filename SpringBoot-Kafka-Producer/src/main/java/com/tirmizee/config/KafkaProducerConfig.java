@@ -43,7 +43,7 @@ public class KafkaProducerConfig {
 	}
 	
 	@Bean(name = "producerJsonFactory")
-	public ProducerFactory<String, String> producerJsonFactory() {
+	public ProducerFactory<String, Object> producerJsonFactory() {
 		return new DefaultKafkaProducerFactory<>(producerJsonConfig());
 	}
 	
@@ -53,7 +53,7 @@ public class KafkaProducerConfig {
 	}
 	
 	@Bean(name = "kafkaJsonTemplate")
-	public KafkaTemplate<String, String> kafkaJsonTemplate() {
+	public KafkaTemplate<String, Object> kafkaJsonTemplate() {
 		return new KafkaTemplate<>(producerJsonFactory());
 	}
 
