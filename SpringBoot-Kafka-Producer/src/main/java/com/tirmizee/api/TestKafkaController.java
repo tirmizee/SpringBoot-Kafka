@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tirmizee.constants.KafkaConstants;
 import com.tirmizee.model.Payload;
+import com.tirmizee.model.Payload.Inner;
 
 @RestController
 @RequestMapping(path = "/kafka")
@@ -58,6 +59,10 @@ public class TestKafkaController {
 		Payload payload = new Payload();
 		payload.setId(123L);
 		payload.setMessage(message);
+		Inner inner = payload.new Inner();
+		inner.setId(555L);
+		inner.setMessage("sssss");
+		payload.setInner(inner);
 		ListenableFuture<SendResult<String, Object>> listenableFuture = kafkaJsonTemplate.send("topic-1", payload);
 		listenableFuture.addCallback(
 			result -> {
@@ -80,6 +85,10 @@ public class TestKafkaController {
 		Payload payload = new Payload();
 		payload.setId(123L);
 		payload.setMessage(message);
+		Inner inner = payload.new Inner();
+		inner.setId(555L);
+		inner.setMessage("sssss");
+		payload.setInner(inner);
 		ListenableFuture<SendResult<String, Object>> listenableFuture = kafkaJsonTemplate.send("topic-2", payload);
 		listenableFuture.addCallback(
 			result -> {

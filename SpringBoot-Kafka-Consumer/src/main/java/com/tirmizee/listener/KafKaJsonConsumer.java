@@ -21,6 +21,10 @@ private final Logger logger = LoggerFactory.getLogger(KafKaObjectConsumer.class)
 		logger.info(String.format("Message recieved -> %s", payload));
 		logger.info("{}", payload.getId());
 		logger.info("{}", payload.getMessage());
+		if (payload.getInner() != null) {
+			logger.info("{}", payload.getInner().getId());
+			logger.info("{}", payload.getInner().getMessage());
+		}
 	}
 	
 }
