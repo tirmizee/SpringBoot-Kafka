@@ -18,7 +18,7 @@ public class KafKaJsonConsumer {
 		topics = KafkaConstants.TOPIC_02,
 		containerFactory = "jsonListenerContainerFactory")
 	void listenToPartitionWithOffset(Payload payload) {
-		logger.info(String.format("Message recieved -> %s", payload));
+		logger.info(String.format("Message json recieved -> %s", payload));
 		logger.info("{}", payload.getId());
 		logger.info("{}", payload.getMessage());
 		if (payload.getInner() != null) {
