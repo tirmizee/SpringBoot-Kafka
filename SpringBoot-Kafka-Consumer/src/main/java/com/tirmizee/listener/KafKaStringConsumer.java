@@ -13,8 +13,23 @@ public class KafKaStringConsumer {
 	private final Logger logger = LoggerFactory.getLogger(KafKaStringConsumer.class);
 	
 	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = KafkaConstants.GROUP_ID)
-	public void consume(String payload) {
-        logger.info(String.format("Message recieved -> %s", payload));
+	public void consume1(String payload) {
+        logger.info(String.format("Message recieved 1 -> %s", payload));
+    }
+	
+	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-2")
+	public void consume2(String payload) {
+        logger.info(String.format("Message recieved 2 -> %s", payload));
+    }
+	
+	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-3")
+	public void consume3(String payload) {
+        logger.info(String.format("Message recieved 3 -> %s", payload));
+    }
+	
+	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-4")
+	public void consume4(String payload) {
+        logger.info(String.format("Message recieved 4 -> %s", payload));
     }
 	
 }

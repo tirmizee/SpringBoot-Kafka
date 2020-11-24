@@ -7,6 +7,11 @@ import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 public class KafkaTopicConfig {
+
+	@Bean
+	public NewTopic topicTest() {
+		return new NewTopic("test", 4, (short) 1);
+	}
 	
 	@Bean
 	public NewTopic topic1() {

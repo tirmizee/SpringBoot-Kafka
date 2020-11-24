@@ -33,7 +33,6 @@ public class KafkaObjectConsumerConfig {
 	    consumerConfig.put(JsonDeserializer.TRUSTED_PACKAGES, DESERIALIZER_PACKAGE_SCAN);
 	    return consumerConfig;
 	}
-	
 
 	@Bean(name = "objectConsumerFactory")
 	public ConsumerFactory<String, String> objectConsumerFactory() {
