@@ -17,7 +17,7 @@ public class KafKaJsonConsumer {
 		groupId = "reflectoring-group-2", 
 		topics = KafkaConstants.TOPIC_02,
 		containerFactory = "jsonListenerContainerFactory")
-	void listenToPartitionWithOffset(Payload payload) {
+	void listenToPartitionWithOffset(@org.springframework.messaging.handler.annotation.Payload Payload payload) {
 		logger.info(String.format("Message json recieved -> %s", payload));
 		logger.info("{}", payload.getId());
 		logger.info("{}", payload.getMessage());
