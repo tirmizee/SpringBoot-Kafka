@@ -1,33 +1,30 @@
-package com.tirmizee.listener;
+package com.tirmizee.kafka.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-import com.tirmizee.constants.KafkaConstants;
-
 @Service
-public class KafKaStringConsumer {
+public class KafKaStringConsumerImpl implements KafKaStringConsumer {
 
-	private final Logger logger = LoggerFactory.getLogger(KafKaStringConsumer.class);
+	private final Logger logger = LoggerFactory.getLogger(KafKaStringConsumerImpl.class);
 	
-	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = KafkaConstants.GROUP_ID)
+	@Override
 	public void consume1(String payload) {
         logger.info(String.format("Message recieved 1 -> %s", payload));
     }
 	
-	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-2")
+	@Override
 	public void consume2(String payload) {
         logger.info(String.format("Message recieved 2 -> %s", payload));
     }
 	
-	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-3")
+	@Override
 	public void consume3(String payload) {
         logger.info(String.format("Message recieved 3 -> %s", payload));
     }
 	
-	@KafkaListener(topics = KafkaConstants.TOPIC_TEST, groupId = "service.test-4")
+	@Override
 	public void consume4(String payload) {
         logger.info(String.format("Message recieved 4 -> %s", payload));
     }

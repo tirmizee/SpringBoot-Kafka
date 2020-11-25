@@ -1,4 +1,4 @@
-package com.tirmizee.listener;
+package com.tirmizee.kafka.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,16 +9,16 @@ import com.tirmizee.constants.KafkaConstants;
 import com.tirmizee.model.Payload;
 
 @Service
-public class KafKaObjectConsumer {
+public class KafKaJsonConsumer {
 
-	private final Logger logger = LoggerFactory.getLogger(KafKaObjectConsumer.class);
+	private final Logger logger = LoggerFactory.getLogger(KafKaJsonConsumer.class);
 	
 	@KafkaListener(
-		groupId = "reflectoring-group-1", 
-		topics = KafkaConstants.TOPIC_01,
-		containerFactory = "objectListenerContainerFactory")
+		groupId = "reflectoring-group-2", 
+		topics = KafkaConstants.TOPIC_02,
+		containerFactory = "jsonListenerContainerFactory")
 	void listenToPartitionWithOffset(Payload payload) {
-		logger.info(String.format("Message recieved -> %s", payload));
+		logger.info(String.format("Message json recieved -> %s", payload));
 		logger.info("{}", payload.getId());
 		logger.info("{}", payload.getMessage());
 		if (payload.getInner() != null) {

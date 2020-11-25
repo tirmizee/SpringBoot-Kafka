@@ -1,4 +1,4 @@
-package com.tirmizee.listener;
+package com.tirmizee.kafka.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +11,17 @@ public class KafKaByteConsumer {
 	private final Logger logger = LoggerFactory.getLogger(KafKaByteConsumer.class);
 	
 	@KafkaListener(
-		groupId = "reflectoring-group-2", 
 		topics = "topic-3",
 		containerFactory = "byteListenerContainerFactory")
 	void listenToPartitionWithOffset(byte[] payload) {
+		logger.info(String.format("Message recieved -> %s", new String(payload)));
+	}
+	
+	@KafkaListener(
+		groupId = "consumer-service-2",
+		topics = "topic-3",
+		containerFactory = "byteListenerContainerFactory")
+	void listenToPartitionWithOffset2(byte[] payload) {
 		logger.info(String.format("Message recieved -> %s", new String(payload)));
 	}
 	
