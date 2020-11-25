@@ -27,3 +27,5 @@
 - https://reflectoring.io/spring-boot-kafka/
 
 - https://medium.com/@_amanarora/replication-in-kafka-58b39e91b64e
+
+- https://codingnconcepts.com/spring-boot/configure-kafka-producer-and-consumer/ (Kafka SSL)
