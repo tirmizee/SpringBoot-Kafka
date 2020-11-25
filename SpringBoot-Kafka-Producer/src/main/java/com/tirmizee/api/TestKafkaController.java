@@ -129,4 +129,23 @@ public class TestKafkaController {
 		return "success";
 	}
 	
+	@GetMapping(path = "/publish/multi")
+	public String publishMulti() throws InterruptedException, ExecutionException {
+		ListenableFuture<SendResult<String, Object>> listenableFuture = kafkaJsonTemplate.send("topic-4", 333);
+		listenableFuture.addCallback(
+			result -> {
+				LOG.info("RecordMetadata partition -> {}", result.getRecordMetadata().partition());
+				LOG.info("RecordMetadata checksum -> {}", result.getRecordMetadata().checksum());
+				LOG.info("RecordMetadata offset -> {}", result.getRecordMetadata().offset());
+				LOG.info("ProducerRecord key -> {}", result.getProducerRecord().key());
+				LOG.info("ProducerRecord topic -> {}", result.getProducerRecord().topic());
+			},
+			ex -> {
+				
+			}
+		);
+		System.out.println("success");
+		return "success";
+	}
+	
 }
