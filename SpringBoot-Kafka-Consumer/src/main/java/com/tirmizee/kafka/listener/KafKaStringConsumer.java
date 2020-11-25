@@ -16,6 +16,6 @@ public interface KafKaStringConsumer {
 	void consume3(String payload) ;
 	
 	@KafkaListener(topics = "${kafka.topic.test}", groupId = "service.test-4")
-	void consume4(String payload) ;
+	void consume4(String payload, String topic) ;
 	
 }
