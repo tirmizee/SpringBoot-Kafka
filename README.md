@@ -25,3 +25,4 @@
 - https://medium.com/@_amanarora/replication-in-kafka-58b39e91b64e
 - https://codingnconcepts.com/spring-boot/configure-kafka-producer-and-consumer/ (Kafka SSL)
 - https://medium.com/@TimvanBaarsen/programmatically-create-kafka-topics-using-spring-kafka-8db5925ed2b1
+- https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438858/Configuring+Confluent+Kafka+Accounts
